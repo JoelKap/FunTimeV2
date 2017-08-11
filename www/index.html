@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' *"/> -->
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+
+  <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <!--Firebase Injection  -->
+  <script src="lib/firebase.js"></script>
+  <script src="lib/angularfire.min.js"></script>
+
+  <!-- <script src="lib/angular-google-maps.min.js"></script> -->
+   <script src="lib/ngCordova/ng-cordova.js"></script> 
+  <script src="lib/ngStorage.min.js"></script>
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
+
+  <!-- your app's js -->
+  <script src="app/app.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHXo4CVCJC_hMXUHPkuFpnDi0HmPcycAs"></script>
+
+  <!--Controller  -->
+
+  <script src="js/controllers.js"></script>
+  <script src="app/components/owner/eventDetails/eventDetails.js"></script>
+  <script src="app/components/owner/business/businessCtrl.js"></script>
+  <script src="app/components/owner/event/eventCtrl.js"></script>
+  <script src="app/components/owner/business/businessDetails/businessDetailsCtrl.js"></script>
+  <script src="app/components/owner/business/businessAddEdit/businessAddEditCtrl.js"></script>
+  <script src="app/components/login/loginCtrl.js"></script>
+  <script src="app/components/registration/registrationCtrl.js"></script>
+  <script src="app/components/event/eventCtrl.js"></script>
+  <script src="app/components/location/locationCtrl.js"></script>
+  <script src="app/components/locationDetails/locationDetailsCtrl.js"></script>
+  <script src="app/components/special/specialCtrl.js"></script>
+  <script src="app/components/User/UserEvent/userEventCtrl.js"></script>
+  <script src="app/components/User/UserEvent/EventDetails/eventDetailsCtrl.js"></script>
+  <script src="app/components/User/UserProfile/userProfile2Ctrl.js"></script>
+  <script src="app/components/User/UserAccount/userAccountCtrl.js"></script>
+  <script src="app/components/owner/event/eventCtrl.js"></script>
+  <script src="app/components/owner/event/eventDetails/eventDetailsCtrl.js"></script>
+  <script src="app/components/owner/event/eventAddEdit/eventAddEditCtrl.js"></script>
+  <script src="app/components/owner/special/specialCtrl.js"></script>
+  <script src="app/components/owner/special/specialDetails/specialDetailsCtrl.js"></script>
+  <script src="app/components/owner/special/specialAddEdit/specialAddEditCtrl.js"></script>
+  <script src="app/components/owner/account/accountCtrl.js"></script>
+  <script src="app/components/home/homeCtrl.js"></script>
+
+
+  <!--Services  -->
+
+  <script src="app/components/owner/eventDetails/eventService.js"></script>
+  <script src="app/components/owner/business/businessService.js"></script>
+  <script src="app/components/login/loginService.js"></script>
+  <script src="app/components/registration/registrationService.js"></script>
+  <script src="app/components/event/eventService.js"></script>
+  <script src="app/components/location/locationServices.js"></script>
+  <script src="app/components/locationDetails/locationDetailsService.js"></script>
+  <script src="app/components/owner/event/eventServices.js"></script>
+   <script src="app/components/owner/special/specialService.js"></script>
+
+
+
+</head>
+
+<body ng-app="FT">
+  <ion-nav-view></ion-nav-view>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<ion-view view-title="Login" name="login-view" ng-controller="loginCtrl as vm">
+    <ion-content class="padding">
+        <form name="myLoginForm" novalidate>
+            <div class="list list-inset">
+                <label class="item item-input">
+              <input type="email" name="username" placeholder="Username" ng-minlength="5" ng-model="vm.email" required>
+          </label>
+                <label class="item item-input">
+              <input type="password" name=password placeholder="Password" ng-minlength="6" ng-model="vm.password"  required>
+          </label>
+            </div>
+            <div class="padding">
+                <p ng-show="myLoginForm.username.$error.required">* Username is required</p>
+                <p ng-show="myLoginForm.username.$invalid && !myLoginForm.username.$pristine">* Username must be a valid email</p>
+                <!-- <p ng-show="myLoginForm.username.$error.minlength">* Username must be min length of 5 character</p>                -->
+                <p ng-show="myLoginForm.password.$error.required">* Password is required</p>
+                <p ng-show="myLoginForm.password.$error.minlength">* Password must be min length of 6 character</p>
+            </div>
+            <div class="padding">
+                <button class="button button-block button-calm" ng-disabled="myLoginForm.$invalid" ng-click="vm.login(vm.email, vm.password)">Login</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

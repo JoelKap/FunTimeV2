@@ -1,0 +1,41 @@
+<ion-view view-title="Special Add/Edit" ng-controller="specialAddEditCtrl as vm">
+    <ion-content class="padding">
+        <form name="myRegForm" novalidate>
+            <div class="list list-inset">
+
+
+
+          <label class="item item-input">
+              <input type="text" name="name" placeholder="Special Name" ng-model="vm.special.name" required>
+          </label>
+
+          <label class="item item-input">
+              <input type="text" name="description" placeholder="Special Description" ng-model="vm.special.description" required>
+          </label>
+
+           <label class="item item-input">
+              <input type="text" name="validFromDate" placeholder="From Date" ng-model="vm.special.validFromDate" required>
+          </label>
+
+          <label class="item item-input">
+              <input type="text" name=validToDate placeholder="To Date" ng-model="vm.special.validToDate"  required>
+          </label>
+            
+        </div>
+
+            <div class="padding">
+                <p ng-show="myRegForm.name.$error.required">* Special Name is required</p>
+
+                <p ng-show="myRegForm.description.$error.required">* Special Description is required</p>
+
+                <p ng-show="myRegForm.validFromDate.$error.required">* From Date is required</p>
+
+                <p ng-show="myRegForm.validToDate.$error.required">* To Date is required</p>
+            </div>
+
+            <div class="padding">
+                <button class="button button-block button-calm" ng-show="!vm.isEdit" ng-disabled="myRegForm.$invalid" ng-click="vm.registerSpecial(vm.special)">Register special</button>
+                <button class="button button-block button-calm" ng-show="vm.isEdit" ng-disabled="myRegForm.$invalid" ng-click="vm.updateSpecial(vm.special)">Update special</button>
+            </div>
+        </form>
+    </ion-content>

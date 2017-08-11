@@ -1,0 +1,32 @@
+<ion-view ng-controller="EventDetailsCtrl as vm">
+    <ion-content class="has-header">
+
+        <div class="card" ng-show="!vm.isDatePassed">
+            <div class="item item-toggle" ng-click="vm.canceEvent(vm.following)">
+                <h2>{{vm.following ? "Booked" : "Removed book"}}</h2>
+                <label class="toggle">
+                    <input type="checkbox" ng-model="vm.following"> 
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="item item-divider item-energized">Event Details</div>
+            <div class="item">{{vm.event.name}}</div>
+            <div class="item">{{vm.event.description}}</div>
+            <div class="item">{{vm.event.date}}</div>
+            <div class="item">{{vm.event.amountInToken}}</div>
+        </div>
+
+        <div class="card">
+            <div class="item item-divider">Location Detail</div>
+            <div class="item">{{vm.event.business.businessName}}</div>
+            <div class="item">{{vm.event.business.businessLocation}}</div>
+            <div class="item">{{vm.event.business.businessContactNumber}}</div>
+        </div>
+
+    </ion-content>
+</ion-view>

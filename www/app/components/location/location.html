@@ -1,0 +1,47 @@
+
+<ion-header-bar class="bar-stable">
+      <h1 class="title">Location Map</h1>
+    </ion-header-bar>
+
+ <ion-view ng-controller="locationCtrl as vm">
+    <ion-content class="has-header">
+        <div id="map" data-tap-disabled="true"></div>
+    </ion-content>
+</ion-view> 
+
+<style>
+    #map {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .scroll {
+        height: 100%
+    }
+
+    .angular-google-map-container {
+        display: block;
+        width: 100%;
+        height: 100%
+    }
+
+    .angular.google-map {
+        display: block;
+        width: 100%;
+        height: 100%
+    }
+
+    .marker-labels {
+        color: red;
+        background-color: white;
+        font-family: "Lucida Grande", "Arial", sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid black;
+        white-space: nowrap;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+</style> 

@@ -1,0 +1,41 @@
+<ion-view view-title="Event Add/Edit" ng-controller="eventAddEditCtrl as vm">
+    <ion-content class="padding">
+        <form name="myRegForm" novalidate>
+            <div class="list list-inset">
+
+
+
+          <label class="item item-input">
+              <input type="text" name="name" placeholder="Event name" ng-model="vm.event.name" required>
+          </label>
+
+          <label class="item item-input">
+              <input type="text" name="description" placeholder="Event Description" ng-model="vm.event.description" required>
+          </label>
+
+           <label class="item item-input">
+              <input type="text" name="date" placeholder="Date" ng-model="vm.event.date" required>
+          </label>
+
+          <label class="item item-input">
+              <input type="text" name=amountInToken placeholder="Price" ng-model="vm.event.amountInToken"  required>
+          </label>
+            
+        </div>
+
+            <div class="padding">
+                <p ng-show="myRegForm.name.$error.required">* Event Name is required</p>
+
+                <p ng-show="myRegForm.description.$error.required">* Event Description is required</p>
+
+                <p ng-show="myRegForm.Date.$error.required">* Event Date is required</p>
+
+                <p ng-show="myRegForm.amountInToken.$error.required">* Price is required</p>
+            </div>
+
+            <div class="padding">
+                <button class="button button-block button-calm" ng-show="!vm.isEdit" ng-disabled="myRegForm.$invalid" ng-click="vm.registerEvent(vm.event)">Register event</button>
+                <button class="button button-block button-calm" ng-show="vm.isEdit" ng-disabled="myRegForm.$invalid" ng-click="vm.updateEvent(vm.event)">Update event</button>
+            </div>
+        </form>
+    </ion-content>

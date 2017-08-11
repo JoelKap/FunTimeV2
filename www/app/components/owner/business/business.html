@@ -1,0 +1,31 @@
+<ion-view  view-title="Business Details" ng-controller="businessCtrl as vm">
+    <ion-content class="has-header">
+
+        <div class="card">
+            <div class="item item-button-right" >
+                <h2>Businesses</h2>
+                <button class="button button-positive icon-left" ng-click="vm.createBusiness()"
+                                ng-class="{'ion-checkmark-round': vm.following, 
+                                'ion-plus-round button-outline': !vm.following}">
+                    {{vm.following ? "Not Business" : "Add Business"}}
+                </button>
+            </div>
+        </div>
+
+            <a class="item item-icon-right" ng-repeat="business in vm.businessToDisplay track by $index" ng-click="vm.businessDetails(business)">
+
+                <div class="row">
+                    <div class="col-30">
+                        <p>{{business.businessName}}</p>
+                    </div>
+                    <div class="col col-center">
+                        <h2 class="positive">{{business.businessTypeName}}</h2>
+                    </div>
+                    <div class="col-30 col-center">
+                        <p>{{business.businessContactNumber}}</p>
+                    </div>
+                </div>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+    </ion-content>
+</ion-view>

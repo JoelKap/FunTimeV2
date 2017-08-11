@@ -1,0 +1,25 @@
+<ion-view view-title="Update user info" ng-controller="userProfile2Ctrl as vm">
+    <ion-content class="padding">
+        <form name="myRegForm" novalidate>
+            <div class="list list-inset">
+
+                <label class="item item-input">
+              <input type="text" name="name" placeholder="Name" ng-model="vm.user.name" required>
+          </label>
+
+                <label class="item item-input">
+              <input type="text" name="surname" placeholder="Surname" ng-model="vm.user.surname" required>
+          </label>
+
+            </div>
+            <div class="padding">
+                <p ng-show="myRegForm.name.$error.required">* Name is required</p>
+                <p ng-show="myRegForm.surname.$error.required">* Surname is required</p>
+            </div>
+
+            <div class="padding">
+                <button class="button button-block button-calm" ng-disabled="myRegForm.$invalid" ng-click="vm.updateUserInfo(vm.user)">update Record</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

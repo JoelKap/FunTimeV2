@@ -1,0 +1,15 @@
+<ion-view title="Event" ng-controller="eventHomeCtr as vm">
+    <ion-content class="has-header">
+        <div class="list">
+            <div class="item item-button-right" ng-repeat="event in vm.events" ng-click="vm.eventLocation(event)">
+                {{event.name}}
+
+                <div class="button">
+                    <a class="buttons button-light">
+                        <i class="icon ion-location"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

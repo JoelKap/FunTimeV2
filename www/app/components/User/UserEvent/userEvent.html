@@ -1,0 +1,24 @@
+<ion-view title="Event" ng-controller="userEventCtrl as vm">
+    <ion-content class="has-header">
+        <div class="list">
+            <!-- <div class="item item-button-right" ng-repeat="special in vm.specials" ng-click="vm.eventLocation(event)"> -->
+            <a class="item item-icon-right" ng-repeat="event in vm.eventToDisplay track by $index" ng-click="vm.eventDetails(event)">
+
+                <div class="row">
+                    <div class="col-30">
+                        <p>{{event.date}}</p>
+                    </div>
+                    <div class="col col-center">
+                        <h2 class="positive">{{event.name}}</h2>
+                    </div>
+                    <div class="col-30 col-center">
+                        <p>{{event.amountInToken}}</p>
+                    </div>
+                </div>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,49 @@
+<ion-view view-title="Registration" name="login-view" ng-controller="registrationCtrl as vm">
+    <ion-content class="padding">
+        <form name="myRegForm" novalidate>
+            <div class="list list-inset">
+
+                <label class="item item-input">
+              <input type="text" name="name" placeholder="Name" ng-model="vm.user.name" required>
+          </label>
+
+                <label class="item item-input">
+              <input type="text" name="surname" placeholder="Surname" ng-model="vm.user.surname" required>
+          </label>
+
+                <label class="item item-input">
+              <input type="email" name="email" placeholder="Email" ng-model="vm.user.email" required>
+          </label>
+                <label class="item item-input">
+              <input type="password" name=password placeholder="Password" ng-minlength="6" ng-model="vm.user.password"  required>
+          </label>
+                <label class="item item-input">
+              <input type="password" name=confirmPassword placeholder="Confirm Passsword" ng-minlength="6" ng-model="vm.confirmpassword"  required>
+          </label>
+            </div>
+
+            <div ng-if="vm.userExist">
+                <span style="color:red">This email address already exist</span>
+            </div>
+
+            <div class="padding">
+                <p ng-show="myRegForm.name.$error.required">* Name is required</p>
+
+                <p ng-show="myRegForm.surname.$error.required">* Surname is required</p>
+
+                <p ng-show="myRegForm.email.$error.required">* Email is required</p>
+                <p ng-show="myRegForm.email.$invalid && !myLoginForm.username.$pristine">* Email must be a valid email</p>
+
+                <p ng-show="myRegForm.password.$error.required">* Password is required</p>
+                <p ng-show="myRegForm.password.$error.minlength">* Password must be min length of 6 character</p>
+
+                <p ng-show="myRegForm.confirmPassword.$error.required">* Password is required</p>
+                <p ng-show="myRegForm.confirmPassword.$error.minlength">* Password must be min length of 6 character</p>
+                <p ng-show="myRegForm.password.$dirty && myRegForm.confirmPassword.$dirty && (vm.user.password != vm.confirmpassword)">* Password do not match</p>
+            </div>
+
+            <div class="padding">
+                <button class="button button-block button-calm" ng-disabled="myRegForm.$invalid" ng-click="vm.register(vm.user)">Register</button>
+            </div>
+        </form>
+    </ion-content>
