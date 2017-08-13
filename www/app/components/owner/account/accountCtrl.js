@@ -3,10 +3,10 @@
 
     angular.module('FT').controller('OwnerAccountCtrl', ['firebaseUrl', '$state', 'eventService',
                                     '$firebaseArray', '$ionicLoading', '$ionicPopup', '$scope', 
-                                    'loginService', '$firebaseObject','$rootScope',
+                                    'loginService', '$firebaseObject','$rootScope', 'registrationService',
                                     OwnerAccountCtrl]);
     function OwnerAccountCtrl(firebaseUrl, $state, eventService, $firebaseArray, $ionicLoading, $ionicPopup,
-        $scope, loginService, $firebaseObject, $rootScope) {
+        $scope, loginService, $firebaseObject, $rootScope, registrationService) {
         var ref = new Firebase(firebaseUrl);
         var vm = this;
         vm.events = [];
@@ -35,35 +35,102 @@
 
         vm.addAmount = function () {
             if (!vm.following) {
-                $ionicPopup.prompt({
-                    title: "Amount to buy",
-                    inputPlaceholder: "Amount",
-                    okText: 'Add'
-                }).then(function(res) { 
-                    if (res != undefined){
-                 var amt =   parseInt(res);   // promise
-                    if (!isNaN(amt)){
-                        if(amt <= 0){
-                            alert('Enter valid number');
-                        }else{
-                            //update user account
-                            vm.user.availableToken += amt;
-                            UpdateUserBalance(vm.user);
-                            alert('account updated successfully');
-                            vm.amount = "";
-                            vm.amount = 'R' + ' ' + vm.user.availableToken;
+                //do something
+                $ionicPopup.show({
+
+                    template: ' Enter Amount<input type="text" ng-model="vm.user.amount"> <br> Enter User Email  <input type="text" ng-model="vm.email" > ',
+                    title: 'Load User Credit',
+                    subTitle: 'Loading user account',
+                    scope: $scope,
+                    buttons: [{
+
+                        text: 'Cancel'
+
+                    }, {
+
+                        text: '<b>Load</b>',
+                        type: 'button-positive',
+                        onTap: function (e) {
+                            if (!vm.email) {
+                                //don't allow the user to close unless he enters wifi password
+                                e.preventDefault();
+                            } else {
+                                return vm.user;
+                            }
                         }
-                        
-                    }else{
-                        alert('Please enter numbers only');
+                    },]
+
+                }).then(function (res) {
+                    var counter = 0;
+                    if (res) {
+                        //verify user account
+                        vm.user.email = vm.email;
+                        registrationService.verifyUser(vm.user, function (user) {
+                            if (user) {
+                            //Get User Details
+                            registrationService.getUserByEmail(vm.email, function(resp){
+                                if(counter > 0){
+                                    return;
+                                }else{
+                                    if(resp.email != undefined)
+                                        {       
+                                            var amount = vm.user.amount;
+                                            var amt =   parseInt(amount);
+                                            if(resp.availableToken == undefined){
+                                                resp.availableToken = 0;
+                                            }
+                                            resp.availableToken += amt;
+                                            UpdateUserBalance(resp);
+                                            alert('credit updated' + ' ' +  'for user' + ' ' + resp.name);
+                                            counter++;
+                                        }
+                                }
+
+                            })
+                                    //Update user balance
+                            } else {
+                                vm.following = false;
+                                alert('incorect email address');
+                            }
+                        })
+                    } else {
+                        vm.following = false;
                     }
-                }else{
-                    vm.followin = false;
-                }
-                })
+                });
+
             } else {
-                vm.followin != vm.following;
+                vm.following = vm.following;
             }
+            // if (!vm.following) {
+            //     $ionicPopup.prompt({
+            //         title: "Amount to buy",
+            //         inputPlaceholder: "Amount",
+            //         okText: 'Add'
+            //     }).then(function(res) { 
+            //         if (res != undefined){
+            //      var amt =   parseInt(res);   // promise
+            //         if (!isNaN(amt)){
+            //             if(amt <= 0){
+            //                 alert('Enter valid number');
+            //             }else{
+            //                 //update user account
+            //                 vm.user.availableToken += amt;
+            //                 UpdateUserBalance(vm.user);
+            //                 alert('account updated successfully');
+            //                 vm.amount = "";
+            //                 vm.amount = 'R' + ' ' + vm.user.availableToken;
+            //             }
+                        
+            //         }else{
+            //             alert('Please enter numbers only');
+            //         }
+            //     }else{
+            //         vm.followin = false;
+            //     }
+            //     })
+            // } else {
+            //     vm.followin != vm.following;
+            // }
         };
         function UpdateUserBalance(user) {
             var editRef = new Firebase(firebaseUrl + "/User/" + user.$id);

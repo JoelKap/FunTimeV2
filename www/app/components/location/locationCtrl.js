@@ -59,7 +59,7 @@
                 });
 
                 google.maps.event.addListener(marker, 'click', function () {
-                    window.location = "geo:" + pos.coords.latitude + "," + pos.coords.longitude + ";=u35";
+                    window.location = "geo:" + pos.business.Latitude + "," + pos.business.Longitude + ";=u35";
                     //infoWindow.open($scope.map, marker);
                 });
 

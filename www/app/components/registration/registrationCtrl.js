@@ -25,6 +25,7 @@
                             vm.userExist = response;
                         }
                     })
+                     $ionicLoading.hide();
                 },3000) 
             }
             catch (ex) {

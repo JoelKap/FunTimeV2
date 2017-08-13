@@ -52,12 +52,28 @@
             })
         }
 
+        var getUserByEmail = function(email, callback){
+                $firebaseArray(newInstance.child('User')).$loaded(function (reponse) {
+                self.users = reponse;
+
+                for (var i = 0; i < self.users.length; i++) {
+                    if (self.users[i].email == email) {
+                      self.user = self.users[i];
+                       return callback(self.user);
+                        //break;
+                    }
+                }
+              return callback(self.user);
+            })
+        }
+
 
 
         return {
             register: register,
             verifyUser: verifyUser,
-            updateUserInfo2:updateUserInfo2
+            updateUserInfo2:updateUserInfo2,
+            getUserByEmail:getUserByEmail
         }
     }
 })();

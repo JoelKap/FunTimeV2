@@ -1,5 +1,5 @@
 
-<ion-side-menus enable-menu-with-back-views="false">
+<ion-side-menus enable-menu-with-back-views="false" ng-controller="LayoutCtrl as vm">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-balanced">
       <ion-nav-back-button>
@@ -15,14 +15,22 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar bar-header bar-balanced">
-      <h1 class="title">User Management</h1>
+      <h1 class="title">Welcome {{vm.user.name}}</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item nav-clear menu-close ui-sref="user.event">Event Managment</ion-item>
-        <ion-item nav-clear menu-close ui-sref="user.profile">Profile Management</ion-item>
-        <ion-item nav-clear menu-close ui-sref="user.account">Account Management</ion-item>
-        <ion-item nav-clear menu-close ui-sref="tab.home">Logout</ion-item>
+        <ion-item nav-clear menu-close ui-sref="user.event">
+          <i class="ion-android-calendar"></i>  Event Managment
+        </ion-item>
+        <ion-item nav-clear menu-close ui-sref="user.profile">
+          <i class="ion-person"></i>  Profile Management
+        </ion-item>
+        <ion-item nav-clear menu-close ui-sref="user.account">
+          <i class="ion-soup-can"></i>  Account Management</ion-item>
+        <ion-item nav-clear menu-close ui-sref="user.item">
+           <i class="ion-card"></i>  Purchase</ion-item>
+        <ion-item nav-clear menu-close ui-sref="tab.home">
+          <i class="ion-unlocked"></i>  Logout</ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>

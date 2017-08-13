@@ -4,11 +4,11 @@
             <div class="list list-inset">
 
                 <label class="item item-input">
-              <input type="text" name="name" placeholder="Name" ng-model="vm.user.name" required>
+              <input type="text" name="name" placeholder="Name" ng-model="vm.user.name" ng-pattern="/^[a-zA-Z\s]*$/" required>
           </label>
 
                 <label class="item item-input">
-              <input type="text" name="surname" placeholder="Surname" ng-model="vm.user.surname" required>
+              <input type="text" name="surname" placeholder="Surname" ng-model="vm.user.surname" ng-pattern="/^[a-zA-Z]*$/" required>
           </label>
 
                 <label class="item item-input">
@@ -28,8 +28,10 @@
 
             <div class="padding">
                 <p ng-show="myRegForm.name.$error.required">* Name is required</p>
+                <p ng-show="myRegForm.name.$error.pattern">* No numbers is allowed for Name and no numbers allowed </p>
 
                 <p ng-show="myRegForm.surname.$error.required">* Surname is required</p>
+                <p ng-show="myRegForm.surname.$error.pattern">* No space is allowed for surname</p>
 
                 <p ng-show="myRegForm.email.$error.required">* Email is required</p>
                 <p ng-show="myRegForm.email.$invalid && !myLoginForm.username.$pristine">* Email must be a valid email</p>

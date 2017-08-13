@@ -1,4 +1,4 @@
-var app = angular.module('FT', ["ionic", "firebase", "ngStorage", "ngCordova"])
+var app = angular.module('FT', ["ionic", "ngCordova", "firebase", "ngStorage"])
 app.constant('firebaseUrl', 'https://fun-time-9c827.firebaseio.com');
 app.run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -6,6 +6,7 @@ app.run(function ($ionicPlatform) {
         // for form inputs)
         if (window.cordova && window.cordova.plugins.keyboard) {
             cordova.plugins.keyboard.hideKeyboardAccessoryBar(true)
+            alert('inside plugings')
         }
 
         if (window.StatusBar) {
@@ -212,6 +213,14 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             views: {
                 'menuContent': {
                     templateUrl: viewBaseUser + 'UserEvent/userEvent.html'
+                }
+            }
+        })
+        .state('user.item', {
+            url: '/item',
+            views: {
+                'menuContent': {
+                    templateUrl: viewBaseUser + 'Purchase/purchase.html'
                 }
             }
         })
